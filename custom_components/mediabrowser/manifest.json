@@ -2,19 +2,19 @@
   "domain": "mediabrowser",
   "name": "MediaBrowser (Emby/Jellyfin) integration",
   "codeowners": [
-    "@rumbu13"
+    "@beegormif"
   ],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://github.com/rumbu13/ha-mediabrowser",
+  "documentation": "https://github.com/beegormif/ha-mediabrowser",
   "homekit": {},
   "iot_class": "local_push",
-  "issue_tracker": "https://github.com/rumbu13/ha-mediabrowser/issues",
+  "issue_tracker": "https://github.com/beegormif/ha-mediabrowser/issues",
   "loggers": [
     "custom_components.mediabrowser"
   ],
   "requirements": [],
   "ssdp": [],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "zeroconf": []
 }
