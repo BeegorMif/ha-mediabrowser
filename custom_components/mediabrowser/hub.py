@@ -492,12 +492,27 @@ class MediaBrowserHub:
     ) -> aiohttp.ClientResponse:
         url = self._rest_url + url
         params = self._default_params | (params or {})
+
+        headers = self._default_headers.copy()
+
+        if self.server_type == ServerType.JELLYFIN:
+            auth = (
+                f'MediaBrowser Client="{self.client_name}"'
+                f', Device="{self.device_name}"'
+                f', DeviceId="{self.device_id}"'
+                f', Version="{self.device_version}"'
+            )
+            if self.api_key is not None:
+                auth += f', Token="{self.api_key}"'
+
+            headers["Authorization"] = auth
+
         async with async_timeout.timeout(self.timeout):
             result = await self._rest.post(
                 url,
                 json=data,
                 params=params,
-                headers=self._default_headers,
+                headers=headers,
                 raise_for_status=True,
             )
         return result
